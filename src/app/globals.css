@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-gray-900;
+}
+
+/* Scrollbar custom styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-sage-500 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-sage-600;
+}
+
+/* Utility classes */
+.container-responsive {
+  @apply px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl;
+}
+
+.btn-primary {
+  @apply px-6 py-3 bg-fresh-600 text-white rounded-lg font-semibold hover:bg-fresh-700 transition-colors;
+}
+
+.btn-outline {
+  @apply px-6 py-3 border-2 border-sage-600 text-sage-600 rounded-lg font-semibold hover:bg-sage-50 transition-colors;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-lg hover:scale-105;
+}
+
+.badge {
+  @apply inline-block px-3 py-1 bg-fresh-100 text-fresh-700 text-xs font-semibold rounded-full;
+}
+
+.section-heading {
+  @apply text-3xl md:text-4xl font-bold text-gray-900;
+}
+
+.section-subheading {
+  @apply text-lg text-gray-600 mt-2;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
