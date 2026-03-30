@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
 
     // Find user
     const usersCollection = await getUsersCollection();
-    const user = await usersCollection.findOne({ email });
+    const user = await usersCollection.findOne({ email: email.toLowerCase() });
 
     if (!user) {
       return NextResponse.json(
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Generate token
-    const token = generateToken(user._id.toString(), email);
+    const token = generateToken(user._id.toString(), email.toLowerCase());
 
     // Set cookie
     const response = NextResponse.json(

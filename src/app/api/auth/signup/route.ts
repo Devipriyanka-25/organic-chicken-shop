@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
 
     // Check if user already exists
     const usersCollection = await getUsersCollection();
-    const existingUser = await usersCollection.findOne({ email });
+    const existingUser = await usersCollection.findOne({ email: email.toLowerCase() });
 
     if (existingUser) {
       return NextResponse.json(
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
     // Create new user
     const newUser = {
       name,
-      email,
+      email: email.toLowerCase(),
       phone,
       password: hashedPassword,
       createdAt: new Date(),
@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
     const result = await usersCollection.insertOne(newUser);
 
     // Generate token
-    const token = generateToken(result.insertedId.toString(), email);
+    const token = generateToken(result.insertedId.toString(), email.toLowerCase());
 
     // Set cookie
     const response = NextResponse.json(

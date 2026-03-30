@@ -108,21 +108,8 @@ export default function OrderHistory() {
     }
   };
 
-  if (!mounted) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex flex-col">
-        <Navbar />
-        <main className="flex-1 container-responsive py-8 md:py-12">
-          <div className="text-center py-12">
-            <div className="inline-block animate-spin">
-              <Package className="w-8 h-8 text-sage-600" />
-            </div>
-            <p className="mt-4 text-gray-600">Loading...</p>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
+  if (!mounted || !user) {
+    return null;
   }
 
   return (

@@ -45,3 +45,8 @@ export async function getOrdersCollection() {
   const db = await getDatabase();
   return db.collection('orders');
 }
+
+export async function getPasswordResetTokensCollection() {
+  const db = await getDatabase();
+  return db.collection('passwordResetTokens');
+}

@@ -84,3 +84,16 @@ export interface UserSession {
   email: string;
   phone: string;
 }
+
+// Generate password reset token
+export function generateResetToken(): string {
+  return crypto.randomBytes(32).toString('hex');
+}
+
+// Verify reset token (not expired)
+export function isResetTokenValid(createdAt: Date, expiryHours: number = 24): boolean {
+  const now = new Date();
+  const diffInMs = now.getTime() - new Date(createdAt).getTime();
+  const diffInHours = diffInMs / (1000 * 60 * 60);
+  return diffInHours < expiryHours;
+}
