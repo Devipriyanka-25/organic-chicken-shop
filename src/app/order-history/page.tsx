@@ -45,7 +45,7 @@ export default function OrderHistory() {
     if (!mounted) return;
 
     if (!user) {
-      router.push("/login");
+      setTimeout(() => router.push("/login"), 500);
       return;
     }
 
@@ -56,11 +56,17 @@ export default function OrderHistory() {
     try {
       const response = await fetch("/api/orders");
       if (!response.ok) {
+        if (response.status === 401) {
+          setError("Your session has expired. Please log in again.");
+          setTimeout(() => router.push("/login"), 2000);
+          return;
+        }
         const data = await response.json();
         throw new Error(data.error || "Failed to fetch orders");
       }
       const data = await response.json();
       setOrders(data.orders || []);
+      setError("");
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
     } finally {
@@ -101,6 +107,23 @@ export default function OrderHistory() {
         return "•";
     }
   };
+
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex flex-col">
+        <Navbar />
+        <main className="flex-1 container-responsive py-8 md:py-12">
+          <div className="text-center py-12">
+            <div className="inline-block animate-spin">
+              <Package className="w-8 h-8 text-sage-600" />
+            </div>
+            <p className="mt-4 text-gray-600">Loading...</p>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -148,7 +171,7 @@ export default function OrderHistory() {
             <p className="text-gray-600 mb-6">
               You haven't placed any orders yet. Start shopping today!
             </p>
-            <Link href="/products" className="btn-primary">
+            <Link href="/products" className="btn-primary inline-block">
               Start Shopping
             </Link>
           </div>
