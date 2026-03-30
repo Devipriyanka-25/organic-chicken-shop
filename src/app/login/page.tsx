@@ -168,7 +168,7 @@ export default function LoginPage() {
   };
 
   const handleGoogleLogin = () => {
-    setErrors({ submit: "Google login coming soon! Please use email or phone login." });
+    window.location.href = '/api/auth/google';
   };
 
   return (
