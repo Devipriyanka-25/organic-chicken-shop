@@ -32,24 +32,32 @@ interface Order {
 export default function OrderHistory() {
   const router = useRouter();
   const { user } = useUserStore();
+  const [mounted, setMounted] = useState(false);
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     if (!user) {
       router.push("/login");
       return;
     }
 
     fetchOrders();
-  }, [user, router]);
+  }, [user, router, mounted]);
 
   const fetchOrders = async () => {
     try {
       const response = await fetch("/api/orders");
       if (!response.ok) {
-        throw new Error("Failed to fetch orders");
+        const data = await response.json();
+        throw new Error(data.error || "Failed to fetch orders");
       }
       const data = await response.json();
       setOrders(data.orders || []);

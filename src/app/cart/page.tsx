@@ -82,8 +82,8 @@ export default function CartPage() {
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-4">Your Cart is Empty</h1>
             <p className="text-gray-600 mb-8">Start by adding some delicious organic meat to your cart</p>
-            <Link href="/products">
-              <button className="btn-primary">Continue Shopping</button>
+            <Link href="/products" className="btn-primary inline-block">
+              Continue Shopping
             </Link>
           </div>
         </main>
@@ -272,13 +272,13 @@ export default function CartPage() {
                 </div>
 
                 {/* Checkout Button */}
-                <Link href="/checkout">
-                  <button className="btn-primary w-full mb-3">Proceed to Checkout</button>
+                <Link href="/checkout" className="btn-primary w-full mb-3 block text-center">
+                  Proceed to Checkout
                 </Link>
 
                 {/* Continue Shopping */}
-                <Link href="/products">
-                  <button className="btn-outline w-full">Continue Shopping</button>
+                <Link href="/products" className="btn-outline w-full block text-center">
+                  Continue Shopping
                 </Link>
 
                 {/* Trust Badges */}

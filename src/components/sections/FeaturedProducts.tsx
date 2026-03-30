@@ -108,10 +108,8 @@ export default function FeaturedProducts() {
 
         {/* View All Button */}
         <div className="text-center">
-          <Link href="/products">
-            <button className="btn-outline">
-              View All Products
-            </button>
+          <Link href="/products" className="btn-outline inline-block">
+            View All Products
           </Link>
         </div>
       </div>

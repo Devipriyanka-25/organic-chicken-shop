@@ -11,6 +11,7 @@ import { ArrowLeft, User, Mail, Phone, MapPin, Edit2 } from "lucide-react";
 export default function Profile() {
   const router = useRouter();
   const { user } = useUserStore();
+  const [mounted, setMounted] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -20,6 +21,12 @@ export default function Profile() {
   });
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     if (!user) {
       router.push("/login");
       return;
@@ -31,7 +38,7 @@ export default function Profile() {
       phone: user.phone || "",
       address: user.address || "",
     });
-  }, [user, router]);
+  }, [user, router, mounted]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -47,7 +54,7 @@ export default function Profile() {
     setIsEditing(false);
   };
 
-  if (!user) {
+  if (!mounted || !user) {
     return null;
   }
 

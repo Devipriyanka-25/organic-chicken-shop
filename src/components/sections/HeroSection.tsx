@@ -37,16 +37,12 @@ export default function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link href="/products">
-                <button className="btn-primary flex items-center justify-center gap-2 w-full sm:w-auto">
-                  Shop Now
-                  <ArrowRight className="w-4 h-4" />
-                </button>
+              <Link href="/products" className="btn-primary flex items-center justify-center gap-2 w-full sm:w-auto">
+                Shop Now
+                <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/subscription">
-                <button className="btn-outline w-full sm:w-auto">
-                  Subscribe & Save 20%
-                </button>
+              <Link href="/subscription" className="btn-outline w-full sm:w-auto flex items-center justify-center">
+                Subscribe & Save 20%
               </Link>
             </div>
 
