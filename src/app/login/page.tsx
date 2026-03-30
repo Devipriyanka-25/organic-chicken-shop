@@ -21,6 +21,10 @@ export default function LoginPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [loginMethod, setLoginMethod] = useState<"email" | "phone">("email");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [otp, setOtp] = useState("");
+  const [showOtpInput, setShowOtpInput] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -87,6 +91,86 @@ export default function LoginPage() {
     }
   };
 
+  const handlePhoneLogin = async () => {
+    if (!phoneNumber) {
+      setErrors({ phone: "Phone number is required" });
+      return;
+    }
+    
+    if (phoneNumber.length !== 10) {
+      setErrors({ phone: "Please enter a valid 10-digit phone number" });
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await fetch("/api/auth/phone-login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone: phoneNumber }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setErrors({ phone: data.error || "Failed to send OTP" });
+        setLoading(false);
+        return;
+      }
+
+      setShowOtpInput(true);
+      setErrors({});
+    } catch (error) {
+      setErrors({ phone: "An error occurred. Please try again." });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleOtpSubmit = async () => {
+    if (!otp || otp.length !== 6) {
+      setErrors({ otp: "Please enter a valid 6-digit OTP" });
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await fetch("/api/auth/verify-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone: phoneNumber, otp }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setErrors({ otp: data.error || "Invalid OTP" });
+        setLoading(false);
+        return;
+      }
+
+      setUser({
+        id: data.user.id,
+        name: data.user.name,
+        email: data.user.email,
+        phone: data.user.phone,
+      });
+
+      setSubmitted(true);
+      setTimeout(() => {
+        router.push("/");
+      }, 1500);
+    } catch (error) {
+      setErrors({ otp: "An error occurred. Please try again." });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleLogin = () => {
+    setErrors({ submit: "Google login coming soon! Please use email or phone login." });
+  };
+
   return (
     <>
       <Navbar />
@@ -111,7 +195,43 @@ export default function LoginPage() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <>
+                  {/* Login Method Tabs */}
+                  <div className="flex gap-4 mb-6 border-b border-gray-200">
+                    <button
+                      onClick={() => {
+                        setLoginMethod("email");
+                        setShowOtpInput(false);
+                        setOtp("");
+                        setPhoneNumber("");
+                        setErrors({});
+                      }}
+                      className={`pb-2 px-4 font-semibold transition ${
+                        loginMethod === "email"
+                          ? "text-fresh-600 border-b-2 border-fresh-600"
+                          : "text-gray-600 hover:text-gray-900"
+                      }`}
+                    >
+                      Email
+                    </button>
+                    <button
+                      onClick={() => {
+                        setLoginMethod("phone");
+                        setFormData({ email: "", password: "" });
+                        setErrors({});
+                      }}
+                      className={`pb-2 px-4 font-semibold transition ${
+                        loginMethod === "phone"
+                          ? "text-fresh-600 border-b-2 border-fresh-600"
+                          : "text-gray-600 hover:text-gray-900"
+                      }`}
+                    >
+                      Phone
+                    </button>
+                  </div>
+
+                  {loginMethod === "email" ? (
+                    <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Error Message */}
                   {errors.submit && (
                     <div className="bg-red-50 border border-red-200 rounded-lg p-4">
@@ -214,18 +334,122 @@ export default function LoginPage() {
                   <div className="grid grid-cols-2 gap-4">
                     <button
                       type="button"
+                      onClick={handleGoogleLogin}
                       className="py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition font-semibold text-gray-700"
                     >
                       Google
                     </button>
                     <button
                       type="button"
+                      onClick={() => setLoginMethod("phone")}
                       className="py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition font-semibold text-gray-700"
                     >
-                      Phone
+                      Phone OTP
                     </button>
                   </div>
-                </form>
+                    </form>
+                  ) : (
+                    <div className="space-y-6">
+                      {/* Error Message */}
+                      {errors.phone && (
+                        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                          <p className="text-red-800 text-sm">{errors.phone}</p>
+                        </div>
+                      )}
+                      {errors.otp && (
+                        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                          <p className="text-red-800 text-sm">{errors.otp}</p>
+                        </div>
+                      )}
+
+                      {!showOtpInput ? (
+                        <>
+                          {/* Phone Number Input */}
+                          <div>
+                            <label className="block text-sm font-semibold text-gray-900 mb-2">
+                              Phone Number
+                            </label>
+                            <div className="flex gap-2">
+                              <div className="flex items-center bg-gray-100 px-3 rounded-lg border border-gray-300">
+                                <span className="text-gray-700 font-semibold">🇮🇳 +91</span>
+                              </div>
+                              <input
+                                type="tel"
+                                value={phoneNumber}
+                                onChange={(e) => {
+                                  setPhoneNumber(e.target.value.replace(/\D/g, "").slice(0, 10));
+                                  if (errors.phone) setErrors((prev) => ({ ...prev, phone: "" }));
+                                }}
+                                placeholder="9876543210"
+                                className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-fresh-500"
+                              />
+                            </div>
+                            {errors.phone && (
+                              <p className="text-red-600 text-sm mt-1">{errors.phone}</p>
+                            )}
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={handlePhoneLogin}
+                            disabled={loading}
+                            className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                          >
+                            {loading ? "Sending OTP..." : "Send OTP"}
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          {/* OTP Input */}
+                          <div>
+                            <label className="block text-sm font-semibold text-gray-900 mb-2">
+                              Enter OTP
+                            </label>
+                            <p className="text-xs text-gray-600 mb-3">
+                              We've sent a 6-digit OTP to +91{phoneNumber}
+                            </p>
+                            <input
+                              type="text"
+                              value={otp}
+                              onChange={(e) => {
+                                setOtp(e.target.value.replace(/\D/g, "").slice(0, 6));
+                                if (errors.otp) setErrors((prev) => ({ ...prev, otp: "" }));
+                              }}
+                              placeholder="000000"
+                              maxLength={6}
+                              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-fresh-500 text-center text-2xl tracking-widest"
+                            />
+                            {errors.otp && (
+                              <p className="text-red-600 text-sm mt-1">{errors.otp}</p>
+                            )}
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={handleOtpSubmit}
+                            disabled={loading}
+                            className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                          >
+                            {loading ? "Verifying..." : "Verify OTP"}
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setShowOtpInput(false);
+                              setOtp("");
+                              setPhoneNumber("");
+                              setErrors({});
+                            }}
+                            className="w-full py-2 text-gray-600 hover:text-gray-900 transition"
+                          >
+                            Change Phone Number
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  )}
+                </>
               )}
 
               {/* Footer */}
