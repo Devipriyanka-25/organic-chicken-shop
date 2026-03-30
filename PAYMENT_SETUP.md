@@ -63,9 +63,10 @@ STRIPE_SECRET_KEY=sk_test_your_secret_key
 
 #### Test Credentials (Sandbox)
 ```
-Publishable Key: pk_test_4eC39HqLyjWDarhtb4rtBb7
-Secret Key: sk_test_4eC39HqLyjWDarhtb46sNckK
+Publishable Key: pk_test_your_publishable_key
+Secret Key: sk_test_your_secret_key
 ```
+⚠️ **Never commit real API keys to repositories. Use environment variables instead.**
 
 Use test card: `4242424242424242` (any future expiry, any CVV)
 

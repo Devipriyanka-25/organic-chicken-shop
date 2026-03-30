@@ -102,11 +102,12 @@ Frontend Request → API Route → Payment Gateway → Verification → Response
 ### Setup
 1. **Create `.env.local`** in the root directory:
 ```env
-NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_test_1234567890123
-RAZORPAY_KEY_SECRET=test_secret_1234567890
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_4eC39HqLyjWDarhtb4rtBb7
-STRIPE_SECRET_KEY=sk_test_4eC39HqLyjWDarhtb46sNckK
+NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_test_your_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_secret
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_your_publishable_key
+STRIPE_SECRET_KEY=sk_test_your_secret_key
 ```
+⚠️ **Note:** Never commit real API keys to repositories. Use environment variables in `.env.local` (which is gitignored).
 
 2. **Start development server**:
 ```bash
