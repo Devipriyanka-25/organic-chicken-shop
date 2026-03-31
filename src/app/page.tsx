@@ -9,6 +9,7 @@ import FeaturedProducts from "@/components/sections/FeaturedProducts";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import FarmStory from "@/components/sections/FarmStory";
 import DealsSection from "@/components/sections/DealsSection";
+import ChatBot from "@/components/ChatBot";
 
 export default function Home() {
   return (
@@ -112,6 +113,7 @@ export default function Home() {
         </section>
       </main>
       <Footer />
+      <ChatBot />
     </>
   );
 }
