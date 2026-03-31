@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import ChatBotWrapper from "@/components/ChatBotWrapper";
 
 // Font configurations
 const inter = Inter({
@@ -50,6 +51,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="font-sans">
         {children}
+        <ChatBotWrapper />
       </body>
     </html>
   );
