@@ -44,7 +44,7 @@ const faqs = [
   },
   {
     q: "Do you offer bulk orders for events?",
-    a: "Absolutely! We offer special bulk discounts. Contact us at hello@organmeat.com for event catering inquiries."
+    a: "Absolutely! We offer special bulk discounts. Contact us at organicfreshmeat26@gmail.com for event catering inquiries."
   }
 ];
 
@@ -107,7 +107,7 @@ export default function FAQPage() {
               Our customer support team is here to help. Reach out anytime!
             </p>
             <a
-              href="mailto:hello@organmeat.com"
+              href="mailto:organicfreshmeat26@gmail.com"
               className="btn-primary inline-block"
             >
               Contact Us

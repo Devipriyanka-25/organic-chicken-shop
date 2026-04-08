@@ -49,7 +49,7 @@ export async function sendPasswordResetEmail(
     const transporter = await initializeEmailTransporter();
 
     const mailOptions = {
-      from: process.env.EMAIL_FROM || 'noreply@organmeat.com',
+      from: process.env.EMAIL_FROM || 'noreply@organicfreshmeat.com',
       to,
       subject: 'Reset Your Password - Organic Meat Shop',
       html: `

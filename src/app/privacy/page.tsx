@@ -62,7 +62,7 @@ export default function PrivacyPage() {
                 6. Contact Us
               </h2>
               <p>
-                If you have any questions about our privacy policy, please contact us at hello@organmeat.com or call +91 44 2786 9999.
+                If you have any questions about our privacy policy, please contact us at organicfreshmeat26@gmail.com or call +91 44 2786 9999.
               </p>
             </section>
 

@@ -85,8 +85,8 @@ export default function ContactPage() {
                 <Mail className="w-6 h-6 text-fresh-600" />
               </div>
               <h3 className="font-semibold text-lg text-gray-900 mb-2">Email</h3>
-              <a href="mailto:hello@organmeat.com" className="text-fresh-600 hover:text-fresh-700 font-semibold">
-                hello@organmeat.com
+              <a href="mailto:organicfreshmeat26@gmail.com" className="text-fresh-600 hover:text-fresh-700 font-semibold">
+                organicfreshmeat26@gmail.com
               </a>
               <p className="text-sm text-gray-600 mt-2">We'll reply within 24 hours</p>
             </div>

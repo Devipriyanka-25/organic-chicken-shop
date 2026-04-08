@@ -207,7 +207,7 @@ The project includes Stripe integration setup:
 
 ## 📞 Support
 
-- **Email**: hello@organmeat.com
+- **Email**: organicfreshmeat26@gmail.com
 - **Phone**: +91 44 2786 9999
 - **Hours**: 9am - 6pm IST, Monday - Friday
 
@@ -217,7 +217,7 @@ This project is licensed under the MIT License - see LICENSE file for details.
 
 ## 👥 Team
 
-Built with ❤️ by the OrganiMeat team for health-conscious families in Tamil Nadu.
+Built with ❤️ by the OrganicFreshMeat team for health-conscious families in Tamil Nadu.
 
 ---
 

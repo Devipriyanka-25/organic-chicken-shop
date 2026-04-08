@@ -138,7 +138,7 @@ export default function SignupPage() {
             <div className="bg-white rounded-2xl shadow-lg p-8">
               {/* Header */}
               <div className="text-center mb-8">
-                <h1 className="text-3xl font-bold text-gray-900">Join OrganiMeat</h1>
+                <h1 className="text-3xl font-bold text-gray-900">Join OrganicFreshMeat</h1>
                 <p className="text-gray-600 mt-2">
                   Create an account for fresh organic meat delivery
                 </p>
@@ -148,7 +148,7 @@ export default function SignupPage() {
                 <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
                   <p className="text-green-800 font-semibold mb-2">✓ Account Created!</p>
                   <p className="text-green-700 text-sm mb-4">
-                    Welcome to OrganiMeat. Redirecting...
+                    Welcome to OrganicFreshMeat. Redirecting...
                   </p>
                 </div>
               ) : (

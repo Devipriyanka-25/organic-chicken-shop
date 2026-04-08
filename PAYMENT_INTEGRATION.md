@@ -275,7 +275,7 @@ Supported on all modern browsers:
 
 - **Razorpay Documentation**: https://razorpay.com/docs/
 - **Stripe Documentation**: https://stripe.com/docs
-- **Project Support**: hello@organmeat.com / +91 96557 37796
+- **Project Support**: organicfreshmeat26@gmail.com / +91 96557 37796
 - **Detailed Setup Guide**: See `PAYMENT_SETUP.md`
 
 ---

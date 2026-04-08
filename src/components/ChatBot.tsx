@@ -86,8 +86,8 @@ const DETAILED_RESPONSES: Record<string, string> = {
   refund: "Full refund within 7 days if you're not satisfied. No questions asked! Contact our support team for instant processing. ✅",
   
   phone: "📞 Call us at +91-XXX-XXXX-XXXX (Mon-Sat, 9 AM - 6 PM)",
-  email: "📧 Email: support@organmeat.com (Response within 24 hours)",
-  address: "📍 OrganiMeat Store, Coimbatore, Tamil Nadu. Visit us for bulk orders or queries!",
+  email: "📧 Email: organicfreshmeat26@gmail.com (Response within 24 hours)",
+  address: "📍 OrganicFreshMeat Store, Coimbatore, Tamil Nadu. Visit us for bulk orders or queries!",
 };
 
 const BOT_RESPONSES: Record<string, string[]> = {
@@ -109,7 +109,7 @@ export default function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "👋 Hi! I'm OrganiMeat Assistant. How can I help you today?",
+      text: "👋 Hi! I'm OrganicFreshMeat Assistant. How can I help you today?",
       sender: "bot",
       timestamp: new Date(),
     },
@@ -271,7 +271,7 @@ export default function ChatBot() {
 
     setTimeout(() => {
       const response =
-        "Thanks for your message! 😊 Please use the menu options above for faster responses, or contact our support team at support@organmeat.com for detailed inquiries.";
+        "Thanks for your message! 😊 Please use the menu options above for faster responses, or contact our support team at organicfreshmeat26@gmail.com for detailed inquiries.";
       setMessages((prev) => [
         ...prev,
         {

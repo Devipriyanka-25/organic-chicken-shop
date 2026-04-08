@@ -25,7 +25,7 @@ export default function Home() {
         {/* Why Choose Us */}
         <section className="py-16 md:py-24 bg-sage-50">
           <div className="container-responsive">
-            <h2 className="section-heading text-center mb-4">Why Choose OrganiMeat?</h2>
+            <h2 className="section-heading text-center mb-4">Why Choose OrganicFreshMeat?</h2>
             <p className="section-subheading text-center max-w-2xl mx-auto mb-12">
               We believe in transparency, quality, and sustainability. Every piece of meat is sourced from certified organic farms with complete farm-to-table traceability.
             </p>
@@ -97,7 +97,7 @@ export default function Home() {
               Ready for Fresh Organic Meat?
             </h2>
             <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-              Join thousands of health-conscious families ordering fresh organic meat from OrganiMeat. Subscribe today and get 20% off your first order!
+              Join thousands of health-conscious families ordering fresh organic meat from OrganicFreshMeat. Subscribe today and get 20% off your first order!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/products">

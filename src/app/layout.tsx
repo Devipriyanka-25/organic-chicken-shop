@@ -18,14 +18,14 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "OrganiMeat - Fresh Organic Meat Delivery | Farm to Table",
+  title: "OrganicFreshMeat - Fresh Organic Meat Delivery | Farm to Table",
   description: "Premium organic, grass-fed, and free-range meat delivered fresh to your doorstep in Tamil Nadu. Order online with same-day delivery, QR code traceability, and subscription plans.",
   keywords: ["organic meat", "grass-fed chicken", "fresh meat delivery", "Tamil Nadu", "farm to table", "subscription service"],
-  authors: [{ name: "OrganiMeat" }],
+  authors: [{ name: "OrganicFreshMeat" }],
   openGraph: {
     type: "website",
     url: "https://organmeat.com",
-    title: "OrganiMeat - Fresh Organic Meat Delivery",
+    title: "OrganicFreshMeat - Fresh Organic Meat Delivery",
     description: "Premium organic meat from certified farms, delivered fresh to your door",
     images: [
       {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "OrganiMeat - Fresh Organic Meat Delivery",
+    title: "OrganicFreshMeat - Fresh Organic Meat Delivery",
     description: "Premium organic meat from certified farms",
   },
 };

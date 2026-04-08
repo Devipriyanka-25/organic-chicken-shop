@@ -214,8 +214,8 @@ export default function OrderConfirmationPage() {
               +91 96557 37796
             </a>
             {' '}or{' '}
-            <a href="mailto:hello@organmeat.com" className="font-bold text-blue-700 hover:underline">
-              hello@organmeat.com
+            <a href="mailto:organicfreshmeat26@gmail.com" className="font-bold text-blue-700 hover:underline">
+              organicfreshmeat26@gmail.com
             </a>
           </p>
         </div>

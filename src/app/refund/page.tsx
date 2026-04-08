@@ -43,7 +43,7 @@ export default function RefundPolicyPage() {
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">4. How to Request a Refund</h2>
             <ol className="list-decimal pl-6 space-y-2">
-              <li>Email us at <strong>support@organmeat.com</strong> within 48 hours of delivery</li>
+              <li>Email us at <strong>organicfreshmeat26@gmail.com</strong> within 48 hours of delivery</li>
               <li>Provide your order number and reason for refund</li>
               <li>Include photos if the product was damaged</li>
               <li>Our team will review and respond within 24 hours</li>
@@ -71,7 +71,7 @@ export default function RefundPolicyPage() {
             <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">7. Contact Us</h2>
             <p>For any refund-related queries, please contact:</p>
             <ul className="space-y-2">
-              <li><strong>Email:</strong> support@organmeat.com</li>
+              <li><strong>Email:</strong> organicfreshmeat26@gmail.com</li>
               <li><strong>Phone:</strong> +91 XXXXXXXXXX</li>
               <li><strong>Hours:</strong> Monday - Friday, 9 AM - 6 PM IST</li>
             </ul>

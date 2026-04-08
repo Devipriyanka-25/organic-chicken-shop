@@ -417,7 +417,7 @@ For authentication issues:
 2. Verify environment variables in `.env.local`
 3. Check browser console for errors
 4. Check server logs for detailed error messages
-5. Email: hello@organmeat.com / +91 96557 37796
+5. Email: organicfreshmeat26@gmail.com / +91 96557 37796
 
 ---
 

@@ -183,7 +183,7 @@ export default function LoginPage() {
               <div className="text-center mb-8">
                 <h1 className="text-3xl font-bold text-gray-900">Welcome Back</h1>
                 <p className="text-gray-600 mt-2">
-                  Sign in to your OrganiMeat account
+                  Sign in to your OrganicFreshMeat account
                 </p>
               </div>
 
@@ -464,7 +464,7 @@ export default function LoginPage() {
             {/* Testimonial */}
             <div className="mt-8 bg-white rounded-lg p-6 shadow-md">
               <p className="text-gray-700 italic mb-4">
-                "OrganiMeat makes it so easy to get fresh, organic meat delivered to my home. Highly recommended!"
+                "OrganicFreshMeat makes it so easy to get fresh, organic meat delivered to my home. Highly recommended!"
               </p>
               <p className="font-semibold text-gray-900">- Devipriyanka</p>
               <p className="text-sm text-gray-600">Coimbatore</p>

@@ -340,4 +340,4 @@ The system handles various error scenarios:
 For issues or questions:
 - **Razorpay Support**: https://razorpay.com/support
 - **Stripe Support**: https://support.stripe.com
-- **Project Support**: hello@organmeat.com / +91 96557 37796
+- **Project Support**: organicfreshmeat26@gmail.com / +91 96557 37796
