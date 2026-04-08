@@ -50,3 +50,8 @@ export async function getPasswordResetTokensCollection() {
   const db = await getDatabase();
   return db.collection('passwordResetTokens');
 }
+
+export async function getCollection(collectionName: string) {
+  const db = await getDatabase();
+  return db.collection(collectionName);
+}

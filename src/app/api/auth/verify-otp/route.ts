@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getUsersCollection } from '@/lib/db';
 import { generateToken } from '@/lib/auth-utils';
-import { otpStorage } from '../phone-login/route';
+import { getOTP, deleteOTP } from '@/lib/otp-utils';
 
 export async function POST(request: NextRequest) {
   try {
@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if OTP exists and is valid
-    const storedOtpData = otpStorage[phone];
+    const storedOtpData = getOTP(phone);
 
     if (!storedOtpData) {
       return NextResponse.json(
@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
 
     // Check expiration
     if (Date.now() > storedOtpData.expiresAt) {
-      delete otpStorage[phone];
+      deleteOTP(phone);
       return NextResponse.json(
         { error: 'OTP has expired. Please request a new one.' },
         { status: 400 }
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
     const token = generateToken(user._id.toString(), user.email);
 
     // Clear used OTP
-    delete otpStorage[phone];
+    deleteOTP(phone);
 
     // Set cookie
     const response = NextResponse.json(

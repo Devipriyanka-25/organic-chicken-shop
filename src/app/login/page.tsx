@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import ChatBot from "@/components/ChatBot";
 import { Eye, EyeOff } from "lucide-react";
 import { isValidEmail } from "@/lib/utils";
 import { useUserStore } from "@/store";
@@ -474,7 +473,6 @@ export default function LoginPage() {
         </div>
       </main>
       <Footer />
-      <ChatBot />
     </>
   );
 }

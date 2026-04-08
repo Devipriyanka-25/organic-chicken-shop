@@ -11,7 +11,7 @@ import { useCartStore, useFilterStore } from "@/store";
 
 export default function ProductsPage() {
   const addItem = useCartStore((state) => state.addItem);
-  const { selectedCategory, priceRange, selectedCertifications, setCategory, setPriceRange } = useFilterStore();
+  const { selectedCategory, priceRange, selectedCertifications, setCategory, setPriceRange, setCertifications } = useFilterStore();
   const [showFilters, setShowFilters] = useState(true);
 
   // Filter products based on selected criteria
@@ -44,6 +44,9 @@ export default function ProductsPage() {
 
   const certifications = ["Organic", "Grass-fed", "Free-range", "Sustainable", "Biodynamic"];
 
+  // Only show certifications for meat products, not fish
+  const showCertifications = selectedCategory !== "fish" && selectedCategory !== "all";
+
   return (
     <>
       <Navbar />
@@ -72,7 +75,13 @@ export default function ProductsPage() {
                       {categories.map((cat) => (
                         <button
                           key={cat.id}
-                          onClick={() => setCategory(cat.id)}
+                          onClick={() => {
+                            setCategory(cat.id);
+                            // Reset certifications when category changes (fish doesn't need meat certifications)
+                            if (cat.id === "fish" || cat.id === "all") {
+                              setCertifications([]);
+                            }
+                          }}
                           className={`block w-full text-left px-4 py-2 rounded-lg transition ${
                             selectedCategory === cat.id
                               ? "bg-fresh-600 text-white"
@@ -101,28 +110,31 @@ export default function ProductsPage() {
                     />
                   </div>
 
-                  {/* Certification Filter */}
-                  <div>
-                    <h3 className="font-semibold text-lg mb-4">Certifications</h3>
-                    <div className="space-y-2">
-                      {certifications.map((cert) => (
-                        <label key={cert} className="flex items-center gap-3 cursor-pointer">
-                          <input
-                            type="checkbox"
-                            className="w-4 h-4 rounded accent-fresh-600"
-                            onChange={(e) => {
-                              if (e.target.checked) {
-                                selectedCertifications.push(cert);
-                              } else {
-                                selectedCertifications.splice(selectedCertifications.indexOf(cert), 1);
-                              }
-                            }}
-                          />
-                          <span className="text-gray-700">{cert}</span>
-                        </label>
-                      ))}
+                  {/* Certification Filter - Only for meat products */}
+                  {showCertifications && (
+                    <div>
+                      <h3 className="font-semibold text-lg mb-4">Certifications</h3>
+                      <div className="space-y-2">
+                        {certifications.map((cert) => (
+                          <label key={cert} className="flex items-center gap-3 cursor-pointer">
+                            <input
+                              type="checkbox"
+                              checked={selectedCertifications.includes(cert)}
+                              className="w-4 h-4 rounded accent-fresh-600"
+                              onChange={(e) => {
+                                if (e.target.checked) {
+                                  setCertifications([...selectedCertifications, cert]);
+                                } else {
+                                  setCertifications(selectedCertifications.filter(c => c !== cert));
+                                }
+                              }}
+                            />
+                            <span className="text-gray-700">{cert}</span>
+                          </label>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </aside>
             )}

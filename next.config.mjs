@@ -11,6 +11,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "via.placeholder.com",
       },
+      {
+        protocol: "https",
+        hostname: "organicfreshmeat.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.organicfreshmeat.com",
+      },
     ],
   },
 };

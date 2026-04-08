@@ -17,6 +17,8 @@ export interface Product {
   badge?: string; // Best Seller, Popular, New, Seasonal
   emoji: string;
   image: string;
+  gallery?: string[]; // Multiple images for product
+  farmImages?: string[]; // Images of the farm
   stock: number;
   qrCode?: string; // QR code for farm traceability
   nutrients?: {

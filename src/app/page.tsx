@@ -6,10 +6,10 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/sections/HeroSection";
 import FeaturedProducts from "@/components/sections/FeaturedProducts";
+import PersonalizedRecommendations from "@/components/sections/PersonalizedRecommendations";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import FarmStory from "@/components/sections/FarmStory";
 import DealsSection from "@/components/sections/DealsSection";
-import ChatBot from "@/components/ChatBot";
 
 export default function Home() {
   return (
@@ -81,6 +81,9 @@ export default function Home() {
         {/* Featured Products */}
         <FeaturedProducts />
 
+        {/* Personalized Recommendations */}
+        <PersonalizedRecommendations />
+
         {/* Farm Story Section */}
         <FarmStory />
 
@@ -113,7 +116,6 @@ export default function Home() {
         </section>
       </main>
       <Footer />
-      <ChatBot />
     </>
   );
 }

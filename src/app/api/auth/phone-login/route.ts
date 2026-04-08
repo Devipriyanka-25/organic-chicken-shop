@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getUsersCollection } from '@/lib/db';
-import crypto from 'crypto';
-
-// In-memory OTP storage (in production, use Redis or database)
-const otpStorage: Record<string, { otp: string; expiresAt: number; userId?: string }> = {};
+import { storeOTP } from '@/lib/otp-utils';
 
 export async function POST(request: NextRequest) {
   try {
@@ -30,14 +27,7 @@ export async function POST(request: NextRequest) {
 
     // Generate 6-digit OTP
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    const expiryTime = Date.now() + 10 * 60 * 1000; // 10 minutes
-
-    // Store OTP
-    otpStorage[phone] = {
-      otp,
-      expiresAt: expiryTime,
-      userId: user._id.toString(),
-    };
+    const expiryTime = storeOTP(phone, otp, user._id.toString());
 
     // In production, send SMS here using Twilio or similar
     console.log(`OTP for +91${phone}: ${otp}`);
@@ -59,5 +49,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
-export { otpStorage };

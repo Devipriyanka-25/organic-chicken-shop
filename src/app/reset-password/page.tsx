@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Eye, EyeOff, Lock } from "lucide-react";
 
-export default function ResetPasswordPage() {
+function ResetPasswordContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
@@ -19,13 +19,6 @@ export default function ResetPasswordPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
 
   if (!token) {
     return (
@@ -230,5 +223,37 @@ export default function ResetPasswordPage() {
       </main>
       <Footer />
     </>
+  );
+}
+
+function ResetPasswordLoading() {
+  return (
+    <>
+      <Navbar />
+      <main className="min-h-screen bg-gradient-to-br from-sage-50 to-fresh-50 py-12">
+        <div className="container-responsive flex items-center justify-center min-h-[calc(100vh-200px)]">
+          <div className="w-full max-w-md">
+            <div className="bg-white rounded-2xl shadow-lg p-8 animate-pulse">
+              <div className="h-12 w-12 bg-gray-200 rounded-full mx-auto mb-4"></div>
+              <div className="h-8 bg-gray-200 rounded w-3/4 mx-auto mb-4"></div>
+              <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto mb-6"></div>
+              <div className="space-y-6">
+                <div className="h-10 bg-gray-200 rounded"></div>
+                <div className="h-10 bg-gray-200 rounded"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <Suspense fallback={<ResetPasswordLoading />}>
+      <ResetPasswordContent />
+    </Suspense>
   );
 }

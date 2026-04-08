@@ -100,14 +100,14 @@ Frontend Request → API Route → Payment Gateway → Verification → Response
 ## Test the Integration Locally
 
 ### Setup
-1. **Create `.env.local`** in the root directory:
+1. **Create `.env.local`** in the root directory with your API keys from respective dashboards:
 ```env
-NEXT_PUBLIC_RAZORPAY_KEY_ID=your_razorpay_key_id
-RAZORPAY_KEY_SECRET=your_razorpay_secret_key
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
-STRIPE_SECRET_KEY=your_stripe_secret_key
+NEXT_PUBLIC_RAZORPAY_KEY_ID=your_test_razorpay_key_from_dashboard
+RAZORPAY_KEY_SECRET=your_test_razorpay_secret_from_dashboard
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_test_stripe_publishable_key_from_dashboard
+STRIPE_SECRET_KEY=your_test_stripe_secret_key_from_dashboard
 ```
-⚠️ **Note:** Never commit real API keys to repositories. Use environment variables in `.env.local` (which is gitignored).
+⚠️ **Important:** Never commit API keys to repositories. The `.env.local` file is in `.gitignore` for security.
 
 2. **Start development server**:
 ```bash

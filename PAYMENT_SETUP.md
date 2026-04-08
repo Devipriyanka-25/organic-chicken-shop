@@ -63,9 +63,10 @@ STRIPE_SECRET_KEY=sk_test_your_secret_key
 
 #### Test Credentials (Sandbox)
 ```
-Publishable Key: your_stripe_publishable_key
-Secret Key: your_stripe_secret_key
+Stripe Test Publishable Key: Copy from your Stripe Dashboard
+Stripe Test Secret Key: Copy from your Stripe Dashboard
 ```
+
 ⚠️ **Never commit real API keys to repositories. Use environment variables instead.**
 
 Use test card: `4242424242424242` (any future expiry, any CVV)
