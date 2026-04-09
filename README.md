@@ -1,5 +1,11 @@
 # OrganiMeat - Fresh Organic Meat Delivery Platform
+## 📸 Screenshots
 
+### Cart Page
+![Cart](images/Cart.jpg)
+
+### Contact Page
+![Contact](images/ContactUs.jpg)
 A modern, mobile-first e-commerce platform for purchasing premium organic, grass-fed, and sustainably-sourced meat in India. Built with Next.js 14, React 18, TypeScript, and Tailwind CSS.
 
 ## 🌿 Features
